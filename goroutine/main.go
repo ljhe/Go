@@ -62,6 +62,7 @@ func chanForSleep()  {
 	fmt.Println("NumGoroutine=", runtime.NumGoroutine())
 	// 读通道 c, 通过通道进行同步等待
 	// 使用无缓冲的通道来实现 goroutine 之间的同步等待
+	// 此时 c 没有任何元素值 会被阻塞在这里
 	<-c
 }
 
