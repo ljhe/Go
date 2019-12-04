@@ -1,13 +1,12 @@
 package main
 
 import (
-	"fmt"
-	"io/ioutil"
-	"net/http"
-	"regexp"
+	"Grammar/crawler/engine"
+	"Grammar/crawler/zhenai/parser"
 )
 
 func main()  {
+<<<<<<< HEAD
 	resp, err := http.Get("http://www.zhenai.com/zhenghun")
 	if err != nil {
 		fmt.Println("something error")
@@ -44,4 +43,10 @@ func printCityList(contents []byte) {
 	for _, a := range all {
 		fmt.Printf("City: %s, URL: %s\n", a[2], a[1])
 	}
+=======
+	engine.Run(engine.Request{
+		Url:        "http://www.zhenai.com/zhenghun",
+		ParserFunc: parser.ParseCityList,
+	})
+>>>>>>> 829e3538edba3869675c27c63d1d9144f4d94e78
 }
