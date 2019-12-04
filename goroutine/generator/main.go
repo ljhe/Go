@@ -48,6 +48,7 @@ func GeneratorInt(done chan struct{}) chan int {
 			case ch <- <-GeneratorIntB(send):
 			case <-done:
 				send <- struct{}{}
+				send <- struct{}{}
 				break Label
 			}
 		}

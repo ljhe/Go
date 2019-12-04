@@ -47,6 +47,8 @@ func goroutine()  {
  * goroutine 运行结束后退出, 写到缓存通道中的数据不会消失, 它可以缓冲和适配两个 goroutine 处理速率不一致的情况
  */
 func chanForSleep()  {
+	// 如果第二个参数值被省略了, 就表示被初始化的这个通道永远无法缓冲任何元素值, 发送给它的元素值应该被立刻取走,
+	// 否则发送方的 goroutine 就会被暂停(或者说阻塞), 直到有接收方接收这个元素值
 	c := make(chan struct{})
 	go func(c chan struct{}) {
 		sum := 0
