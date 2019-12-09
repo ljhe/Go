@@ -4,12 +4,8 @@ import (
 	"fmt"
 )
 
-var num int = 0
-var row int = 0
-var col int = 0
-
 func find(grid [][]byte, i, j int)  {
-	if i < 0 || i >= row || j < 0 || j >= col {
+	if i < 0 || i >= len(grid) || j < 0 || j >= len(grid[0]) {
 		return
 	}
 
@@ -26,11 +22,17 @@ func find(grid [][]byte, i, j int)  {
 }
 
 func numIslands(grid [][]byte) int {
-	row = len(grid)
-	col = len(grid[0])
+	row := len(grid)
+	num := 0
+	if row == 0 {
+		return num
+	}
+	col := len(grid[0])
+	if col == 0 {
+		return num
+	}
 	for i := 0; i < row; i++ {
 		for j := 0; j < col; j++ {
-			fmt.Println(grid[i][j])
 			if grid[i][j] == '1' {
 				find(grid, i, j)
 				num++
@@ -47,6 +49,7 @@ func main()  {
 		{'0','0','1','0','0'},
 		{'0','0','0','1','1'},
 	}
+	grid = [][]byte{{}}
 	fmt.Println(numIslands(grid))
 }
 
