@@ -1,4 +1,4 @@
-package main
+package my_hash
 
 import "fmt"
 
@@ -33,6 +33,24 @@ func (this *MyHashSet) Add(key int)  {
 	}
 }
 
+func (this *MyHashSet) AddForContainsDuplicate(key int) bool {
+	k := this.HashFunc(key)
+	flag := true
+	if len(this.value[k]) == 0 {
+		this.value[k] = append(this.value[k], key)
+	} else {
+		for _, val := range this.value[k] {
+			if val == key {
+				flag = false
+				break
+			}
+		}
+		if flag == true {
+			this.value[k] = append(this.value[k], key)
+		}
+	}
+	return flag
+}
 
 func (this *MyHashSet) Remove(key int)  {
 	k := this.HashFunc(key)
