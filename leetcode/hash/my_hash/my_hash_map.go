@@ -36,6 +36,15 @@ func (this *MyHashMap) Remove(key int)  {
 	delete(this.hashMap, key)
 }
 
+// 给定一个非空整数数组,除了某个元素只出现一次以外,其余每个元素均出现两次,找出那个只出现了一次的元素.
+func (this *MyHashMap) singleNumber(nums []int) int {
+	for _, v := range nums {
+		if this.Get(v) != -1 {
+			delete(this.hashMap, v)
+		}
+	}
+	return nums[0]
+}
 
 /**
  * Your MyHashMap object will be instantiated and called as such:
@@ -47,10 +56,5 @@ func (this *MyHashMap) Remove(key int)  {
 
 func main()  {
 	obj := Constructor1()
-	obj.Put(2,1)
-	fmt.Println(obj)
-	param2 := obj.Get(2)
-	obj.Remove(2)
-	fmt.Println(param2)
 	fmt.Println(obj)
 }
